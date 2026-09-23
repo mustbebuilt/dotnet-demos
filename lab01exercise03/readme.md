@@ -45,7 +45,7 @@ public class Book
 
     public void ReturnBook()
     {
-        if (available) throw new InvalidOperationException("Already available");
+        if (available) throw new InvalidOperationException("Cannot return: book is not currently checked out");
         available = true;
     }
 }

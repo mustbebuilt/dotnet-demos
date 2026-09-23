@@ -54,7 +54,7 @@ public class Book
     {
         if (available)
         {
-            throw new InvalidOperationException($"Book '{title}' is already marked as available.");
+            throw new InvalidOperationException($"Cannot return '{title}': this book is not currently checked out.");
         }
         available = true;
     }
@@ -147,7 +147,7 @@ public class Library
 
         if (book.IsAvailable())
         {
-            Console.WriteLine($"[!] Notice: '{book.GetTitle()}' is already in the library (not currently borrowed).");
+            Console.WriteLine($"[!] Return Failed: '{book.GetTitle()}' is not currently on loan (it is already on the shelf).");
             return;
         }
 
@@ -219,6 +219,10 @@ public class Program
         Console.WriteLine("\n4. RETURNING BOOKS");
         Console.WriteLine("--------------------------------------------------");
         library.ReturnBook("9780132350884"); // Clean Code is returned
+
+        // Attempting to return a book not on loan (already in the library)
+        Console.WriteLine("\nAttempting to return a book not currently on loan:");
+        library.ReturnBook("9780132350884"); // Clean Code returned again
 
         library.DisplayInventory();
 
