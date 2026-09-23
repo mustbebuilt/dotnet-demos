@@ -1,0 +1,25 @@
+@startuml Sequence01_Book
+skinparam sequenceMessageAlign center
+
+actor User
+participant "Program" as Main
+participant "book : Book" as Book
+
+User -> Main : Run Program
+activate Main
+
+Main -> Book ** : new Book("1984", "George Orwell", "9780451524935")
+activate Book
+Book --> Main : book instance
+deactivate Book
+
+Main -> Book : DisplayInfo()
+activate Book
+Book -> Book : Read title, author, isbn
+Book --> Main : write to console
+deactivate Book
+
+Main --> User : Console Output
+deactivate Main
+
+@enduml

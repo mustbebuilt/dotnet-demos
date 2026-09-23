@@ -1,0 +1,32 @@
+@startuml Sequence04_Polymorphic_Payroll
+skinparam sequenceMessageAlign center
+
+actor User
+participant "Program" as Main
+participant "salaried : SalariedEmployee" as SalEmp
+participant "hourly : HourlyEmployee" as HrEmp
+
+User -> Main : Run Program
+activate Main
+
+Main -> Main : Iterate List<Employee>
+
+loop for each Employee in employees
+    alt Employee is Salaried
+        Main -> SalEmp : CalculatePay()
+        activate SalEmp
+        SalEmp --> Main : annualSalary / 12
+        deactivate SalEmp
+    else Employee is Hourly
+        Main -> HrEmp : CalculatePay()
+        activate HrEmp
+        HrEmp --> Main : hourlyRate * hoursWorked
+        deactivate HrEmp
+    end
+    Main -> Main : totalPayroll += pay
+end
+
+Main --> User : Display Payroll Summary (£)
+deactivate Main
+
+@enduml

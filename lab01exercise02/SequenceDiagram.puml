@@ -1,0 +1,36 @@
+@startuml Sequence02_Student_Module
+skinparam sequenceMessageAlign center
+
+actor User
+participant "Program" as Main
+participant "alice : Student" as Student
+participant "cs101 : Module" as Module
+
+User -> Main : Run Program
+activate Main
+
+Main -> Student ** : new Student("S101", "Alice Smith")
+Main -> Module ** : new Module("CS101", "Intro to Programming")
+
+Main -> Student : Enroll(cs101)
+activate Student
+Student -> Student : modules.Add(cs101)
+
+Student -> Module : AddStudent(alice)
+activate Module
+Module -> Module : students.Add(alice)
+Module --> Student : void
+deactivate Module
+
+Student --> Main : void
+deactivate Student
+
+Main -> Student : GetModules()
+activate Student
+Student --> Main : List<Module>
+deactivate Student
+
+Main --> User : Display Enrolled Modules
+deactivate Main
+
+@enduml

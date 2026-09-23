@@ -1,0 +1,15 @@
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/bin/Debug/net10.0/lab01exercise03
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/bin/Debug/net10.0/lab01exercise03.deps.json
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/bin/Debug/net10.0/lab01exercise03.runtimeconfig.json
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/bin/Debug/net10.0/lab01exercise03.dll
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/bin/Debug/net10.0/lab01exercise03.pdb
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.AssemblyInfoInputs.cache
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.AssemblyInfo.cs
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.csproj.CoreCompileInputs.cache
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.sourcelink.json
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.dll
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/refint/lab01exercise03.dll
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.pdb
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/lab01exercise03.genruntimeconfig.cache
+/Users/martincooper/Documents/github-demo-sites-for-modules/dotnet-demos/lab01exercise03/obj/Debug/net10.0/ref/lab01exercise03.dll

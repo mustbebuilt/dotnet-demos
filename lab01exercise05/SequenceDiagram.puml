@@ -1,0 +1,28 @@
+@startuml Sequence05_Payment_Processing
+skinparam sequenceMessageAlign center
+
+actor User
+participant "Program" as Main
+participant "checkout : CheckoutService" as Checkout
+participant "method : PaymentMethod\n(CreditCardPayment)" as CC
+participant "method : PaymentMethod\n(PayPalPayment)" as PP
+
+Main -> Checkout : ProcessPayment(card, 149.99)
+activate Checkout
+Checkout -> CC : Pay(149.99)
+activate CC
+CC --> Checkout : [Credit Card] Paid £149.99
+deactivate CC
+Checkout --> Main : complete
+deactivate Checkout
+
+Main -> Checkout : ProcessPayment(paypal, 45.50)
+activate Checkout
+Checkout -> PP : Pay(45.50)
+activate PP
+PP --> Checkout : [PayPal] Paid £45.50
+deactivate PP
+Checkout --> Main : complete
+deactivate Checkout
+
+@enduml

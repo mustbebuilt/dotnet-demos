@@ -1,0 +1,37 @@
+@startuml Exercise02_Student_Module
+skinparam classAttributeIconSize 0
+
+class Student {
+    - studentId : string
+    - name : string
+    - modules : List<Module>
+    + Student(id : string, name : string)
+    + GetStudentId() : string
+    + GetName() : string
+    + Enroll(module : Module) : void
+    + GetModules() : List<Module>
+    + ToString() : string
+}
+
+class Module {
+    - code : string
+    - title : string
+    - students : List<Student>
+    + Module(code : string, title : string)
+    + GetCode() : string
+    + GetTitle() : string
+    + AddStudent(student : Student) : void
+    + GetStudents() : List<Student>
+    + ToString() : string
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+Student "0..*" -- "0..*" Module : enrols in
+
+Program ..> Student : creates / uses >
+Program ..> Module : creates / uses >
+
+@enduml

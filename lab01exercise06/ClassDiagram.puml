@@ -1,0 +1,82 @@
+@startuml Exercise06_Online_Shopping_System
+skinparam classAttributeIconSize 0
+
+class Customer {
+    - customerId : string
+    - name : string
+    + Customer(customerId : string, name : string)
+    + getCustomerId() : string
+    + getName() : string
+    + placeOrder(order : Order, paymentMethod : PaymentMethod) : void
+    + displayOrderHistory() : void
+}
+
+class Order {
+    - orderNumber : string
+    - isPaid : bool
+    - createdAt : DateTime
+    + Order(orderNumber : string)
+    + addItem(product : Product, quantity : int) : void
+    + calculateTotal() : double
+    + processPayment(paymentMethod : PaymentMethod) : void
+    + printReceipt() : void
+}
+
+class OrderItem {
+    - quantity : int
+    + OrderItem(product : Product, quantity : int)
+    + getProduct() : Product
+    + getQuantity() : int
+    + getSubtotal() : double
+}
+
+class Product {
+    - productId : string
+    - name : string
+    - price : double
+    + Product(productId : string, name : string, price : double)
+    + Product(name : string, price : double)
+    + getProductId() : string
+    + getName() : string
+    + getPrice() : double
+}
+
+interface PaymentMethod {
+    + {abstract} pay(amount : double) : void
+}
+
+class CreditCardPayment {
+    - cardNumber : string
+    - cardHolder : string
+    + CreditCardPayment(cardNumber : string, cardHolder : string)
+    + pay(amount : double) : void
+}
+
+class PayPalPayment {
+    - email : string
+    + PayPalPayment(email : string)
+    + pay(amount : double) : void
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+' Relationships
+Customer "1" --> "0..*" Order : places
+Order "1" *-- "1..*" OrderItem : composition
+OrderItem "0..*" --> "1" Product : references
+
+' Interface realizations
+PaymentMethod <|.. CreditCardPayment
+PaymentMethod <|.. PayPalPayment
+
+' Collaborations
+Order ..> PaymentMethod : processes with >
+Customer ..> PaymentMethod : provides >
+
+Program ..> Customer : creates / uses >
+Program ..> Product : creates >
+Program ..> PaymentMethod : creates >
+
+@enduml

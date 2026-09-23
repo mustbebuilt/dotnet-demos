@@ -1,0 +1,51 @@
+@startuml Sequence03_Library
+skinparam sequenceMessageAlign center
+
+actor User
+participant "Program" as Main
+participant "library : Library" as Lib
+participant "alice : Member" as Member
+participant "book1 : Book" as Book
+
+Main -> Lib : RegisterMember(alice)
+Main -> Lib : AddBook(book1)
+
+== Successful Borrow ==
+Main -> Lib : BorrowBook("9780132350884", alice)
+activate Lib
+Lib -> Lib : Check member is registered
+Lib -> Book : IsAvailable()
+activate Book
+Book --> Lib : true
+deactivate Book
+
+Lib -> Book : Borrow()
+activate Book
+Book -> Book : available = false
+Book --> Lib : void
+deactivate Book
+Lib --> Main : [✓] Borrowed
+deactivate Lib
+
+== Failed Borrow (Already Borrowed) ==
+Main -> Lib : BorrowBook("9780132350884", bob)
+activate Lib
+Lib -> Book : IsAvailable()
+activate Book
+Book --> Lib : false
+deactivate Book
+Lib --> Main : [X] Borrow Failed (Unavailable)
+deactivate Lib
+
+== Return Book ==
+Main -> Lib : ReturnBook("9780132350884")
+activate Lib
+Lib -> Book : ReturnBook()
+activate Book
+Book -> Book : available = true
+Book --> Lib : void
+deactivate Book
+Lib --> Main : [✓] Returned
+deactivate Lib
+
+@enduml

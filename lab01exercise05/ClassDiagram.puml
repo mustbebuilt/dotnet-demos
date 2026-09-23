@@ -1,0 +1,46 @@
+@startuml Exercise05_Interfaces_Extensibility
+skinparam classAttributeIconSize 0
+
+interface PaymentMethod {
+    + {abstract} pay(amount : double) : void
+}
+
+class CreditCardPayment {
+    - cardNumber : string
+    - cardHolder : string
+    + CreditCardPayment(cardNumber : string, cardHolder : string)
+    + pay(amount : double) : void
+}
+
+class PayPalPayment {
+    - email : string
+    + PayPalPayment(email : string)
+    + pay(amount : double) : void
+}
+
+class BankTransferPayment {
+    - sortCode : string
+    - accountNumber : string
+    + BankTransferPayment(sortCode : string, accountNumber : string)
+    + pay(amount : double) : void
+}
+
+class CheckoutService {
+    + processPayment(method : PaymentMethod, amount : double) : void
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+' Interface realizations
+PaymentMethod <|.. CreditCardPayment
+PaymentMethod <|.. PayPalPayment
+PaymentMethod <|.. BankTransferPayment
+
+' Dependencies
+CheckoutService ..> PaymentMethod : uses >
+Program ..> CheckoutService : creates / uses >
+Program ..> PaymentMethod : creates / uses >
+
+@enduml

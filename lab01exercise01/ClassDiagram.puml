@@ -1,0 +1,21 @@
+@startuml Exercise01_Book
+skinparam classAttributeIconSize 0
+
+class Book {
+    - title : string
+    - author : string
+    - isbn : string
+    + Book(title : string, author : string, isbn : string)
+    + GetTitle() : string
+    + GetAuthor() : string
+    + GetIsbn() : string
+    + DisplayInfo() : void
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+Program ..> Book : creates / uses >
+
+@enduml

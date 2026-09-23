@@ -1,0 +1,47 @@
+@startuml Sequence06_Online_Shopping
+skinparam sequenceMessageAlign center
+
+actor Customer as Cust
+participant "alice : Customer" as CustomerObj
+participant "order : Order" as OrderObj
+participant "item : OrderItem" as ItemObj
+participant "laptop : Product" as ProdObj
+participant "payment : CreditCardPayment" as PayMethod
+
+Cust -> OrderObj ** : new Order("ORD-1001")
+
+Cust -> OrderObj : AddItem(laptop, 1)
+activate OrderObj
+OrderObj -> ItemObj ** : new OrderItem(laptop, 1)
+deactivate OrderObj
+
+Cust -> CustomerObj : PlaceOrder(order, payment)
+activate CustomerObj
+
+CustomerObj -> OrderObj : ProcessPayment(payment)
+activate OrderObj
+
+OrderObj -> OrderObj : CalculateTotal()
+activate OrderObj
+OrderObj -> ItemObj : GetSubtotal()
+activate ItemObj
+ItemObj -> ProdObj : GetPrice()
+ProdObj --> ItemObj : 1299.99
+ItemObj --> OrderObj : 1299.99 (price * quantity)
+deactivate ItemObj
+deactivate OrderObj
+
+OrderObj -> PayMethod : Pay(1443.98)
+activate PayMethod
+PayMethod --> OrderObj : [Credit Card] Paid £1,443.98
+deactivate PayMethod
+
+OrderObj -> OrderObj : isPaid = true
+OrderObj --> CustomerObj : order paid ✓
+deactivate OrderObj
+
+CustomerObj -> CustomerObj : orders.Add(order)
+CustomerObj --> Cust : Order Completed
+deactivate CustomerObj
+
+@enduml

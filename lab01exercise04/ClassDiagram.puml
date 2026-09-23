@@ -1,0 +1,39 @@
+@startuml Exercise04_Inheritance_Polymorphism
+skinparam classAttributeIconSize 0
+
+abstract class Employee {
+    - employeeId : string
+    - name : string
+    + Employee(employeeId : string, name : string)
+    + GetEmployeeId() : string
+    + GetName() : string
+    + {abstract} CalculatePay() : double
+}
+
+class SalariedEmployee {
+    - annualSalary : double
+    + SalariedEmployee(employeeId : string, name : string, annualSalary : double)
+    + GetAnnualSalary() : double
+    + CalculatePay() : double
+}
+
+class HourlyEmployee {
+    - hourlyRate : double
+    - hoursWorked : double
+    + HourlyEmployee(employeeId : string, name : string, hourlyRate : double, hoursWorked : double)
+    + GetHourlyRate() : double
+    + GetHoursWorked() : double
+    + CalculatePay() : double
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+' Inheritance hierarchy
+Employee <|-- SalariedEmployee
+Employee <|-- HourlyEmployee
+
+Program ..> Employee : processes polymorphically >
+
+@enduml

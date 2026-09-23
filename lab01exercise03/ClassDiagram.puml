@@ -1,0 +1,51 @@
+@startuml Exercise03_Library_System
+skinparam classAttributeIconSize 0
+
+class Library {
+    - name : string
+    - books : List<Book>
+    - members : List<Member>
+    + Library(name : string)
+    + AddBook(book : Book) : void
+    + RegisterMember(member : Member) : void
+    + BorrowBook(isbn : string, member : Member) : void
+    + ReturnBook(isbn : string) : void
+    + DisplayInventory() : void
+}
+
+class Book {
+    - title : string
+    - isbn : string
+    - available : bool
+    + Book(title : string, isbn : string)
+    + GetTitle() : string
+    + GetIsbn() : string
+    + IsAvailable() : bool
+    + Borrow() : void
+    + ReturnBook() : void
+}
+
+class Member {
+    - memberId : string
+    - name : string
+    + Member(memberId : string, name : string)
+    + GetMemberId() : string
+    + GetName() : string
+}
+
+class Program {
+    + {static} Main() : void
+}
+
+' Aggregation relationships
+Library o-- "0..*" Book : contains
+Library o-- "0..*" Member : registers
+
+' Object collaboration
+Library ..> Member : interacts with
+
+Program ..> Library : creates / uses >
+Program ..> Book : creates >
+Program ..> Member : creates >
+
+@enduml
