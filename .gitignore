@@ -1,0 +1,67 @@
+## --------------------------------------------------
+## .NET / C# Build Artifacts
+## --------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## --------------------------------------------------
+## IDEs & Editors
+## --------------------------------------------------
+# Visual Studio
+.vs/
+*.dotCover
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code (Keep shared settings like PlantUML config, ignore user states)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+.ionide/
+
+## --------------------------------------------------
+## Operating System Specific Files
+## --------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+## --------------------------------------------------
+## Logs, Crash Reports & Diagnostics
+## --------------------------------------------------
+*.log
+*.tmp
+*.temp
+TestResults/
+*.received.*
